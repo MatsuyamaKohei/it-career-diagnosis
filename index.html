@@ -310,15 +310,17 @@
             flex: 1;
         }
 
-        .choice-btn:hover {
-            border-color: var(--main);
-            background: var(--sub);
-            transform: translateX(3px);
-        }
+        @media (hover: hover) {
+            .choice-btn:hover {
+                border-color: var(--main);
+                background: var(--sub);
+                transform: translateX(3px);
+            }
 
-        .choice-btn:hover .choice-letter {
-            background: var(--main);
-            color: var(--white);
+            .choice-btn:hover .choice-letter {
+                background: var(--main);
+                color: var(--white);
+            }
         }
 
         .choice-btn.selected {
@@ -539,9 +541,11 @@
             font-size: 17px;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 22px rgba(232, 53, 109, 0.48);
+        @media (hover: hover) {
+            .cta-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 22px rgba(232, 53, 109, 0.48);
+            }
         }
 
         .retry-btn {
@@ -561,9 +565,11 @@
             touch-action: manipulation;
         }
 
-        .retry-btn:hover {
-            border-color: var(--main);
-            background: var(--sub);
+        @media (hover: hover) {
+            .retry-btn:hover {
+                border-color: var(--main);
+                background: var(--sub);
+            }
         }
 
         /* ── アニメーション ── */
