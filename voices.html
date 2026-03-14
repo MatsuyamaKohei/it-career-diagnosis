@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>先輩の声 | みちのくコンピュータアカデミー</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --main: #006D3A;
+            --main-dark: #004d28;
+            --accent: #E8356D;
+            --accent-dark: #c4204f;
+            --bg: #f5f5f5;
+            --white: #fff;
+            --text: #1a1a1a;
+            --text-muted: #666;
+            --radius: 14px;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+
+        /* ── HEADER ── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 109, 58, 0.96);
+            backdrop-filter: blur(10px);
+            padding: 0 40px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: white;
+            font-weight: 900;
+            font-size: 17px;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span { color: rgba(255,255,255,0.55); font-size: 12px; font-weight: 400; margin-left: 10px; }
+
+        .header-back {
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .header-back:hover { color: white; }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, var(--main-dark) 0%, var(--main) 55%, #00954e 100%);
+            color: white;
+            padding: 90px 0 72px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0.07) 0%, transparent 65%);
+        }
+
+        .hero-inner { position: relative; z-index: 1; }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 100px;
+            padding: 6px 18px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 22px;
+        }
+
+        .hero-title {
+            font-size: clamp(34px, 5vw, 56px);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            margin-bottom: 18px;
+        }
+
+        .hero-title em {
+            font-style: normal;
+            color: #6ee7b7;
+        }
+
+        .hero-sub {
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.85;
+            max-width: 520px;
+            margin: 0 auto 36px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat { text-align: center; }
+        .hero-stat-num { font-size: 36px; font-weight: 900; }
+        .hero-stat-num sup { font-size: 18px; }
+        .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 2px; }
+
+        /* ── SECTION COMMON ── */
+        .section { padding: 96px 0; }
+        .section-alt { background: white; }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--main);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: clamp(26px, 3.5vw, 38px);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 14px;
+        }
+
+        .section-sub {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.85;
+        }
+
+        /* ── VOICE CARDS (detailed) ── */
+        .voice-list { display: flex; flex-direction: column; gap: 40px; }
+
+        .voice-article {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+
+        .voice-article:nth-child(even) {
+            grid-template-columns: 1fr 320px;
+        }
+
+        .voice-article:nth-child(even) .voice-profile {
+            order: 2;
+        }
+
+        .voice-profile {
+            background: linear-gradient(160deg, var(--main-dark), var(--main));
+            color: white;
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .voice-avatar {
+            width: 90px; height: 90px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: 3px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .voice-name { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+
+        .voice-dept {
+            font-size: 12px;
+            background: rgba(255,255,255,0.15);
+            padding: 5px 14px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+
+        .voice-career {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+        }
+
+        .voice-career strong { color: white; font-weight: 700; }
+
+        .voice-body { padding: 40px 44px; }
+
+        .voice-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 100px;
+            background: #e8f5ee;
+            color: var(--main);
+            margin-bottom: 16px;
+            letter-spacing: 0.06em;
+        }
+
+        .voice-q {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--main);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .voice-q::before {
+            content: 'Q';
+            flex-shrink: 0;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: var(--main);
+            color: white;
+            font-size: 12px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        .voice-a {
+            font-size: 14px;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 28px;
+            padding-left: 32px;
+        }
+
+        .voice-a:last-child { margin-bottom: 0; }
+
+        .voice-a em {
+            font-style: normal;
+            font-weight: 700;
+            color: var(--main);
+            border-bottom: 2px solid #a7f3d0;
+        }
+
+        /* ── GRAD GRID ── */
+        .grad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .grad-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 28px 26px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            border-top: 4px solid var(--main);
+        }
+
+        .grad-company {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            margin-bottom: 6px;
+        }
+
+        .grad-role {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .grad-dept {
+            display: inline-block;
+            font-size: 11px;
+            background: #e8f5ee;
+            color: var(--main);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .grad-quote {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.85;
+            border-left: 3px solid #d1fae5;
+            padding-left: 14px;
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            background: linear-gradient(135deg, var(--main-dark), var(--main));
+            color: white;
+            padding: 96px 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 14px;
+        }
+
+        .cta-sub {
+            font-size: 15px;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+            line-height: 1.85;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-accent {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 18px 40px;
+            font-size: 16px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 20px rgba(232,53,109,0.4);
+        }
+
+        @media (hover: hover) {
+            .btn-accent:hover {
+                background: var(--accent-dark);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 28px rgba(232,53,109,0.5);
+            }
+        }
+
+        .btn-outline-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 16px 36px;
+            font-size: 16px;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: all 0.2s;
+        }
+
+        @media (hover: hover) {
+            .btn-outline-white:hover {
+                border-color: white;
+                background: rgba(255,255,255,0.1);
+            }
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #0d1117;
+            color: white;
+            padding: 32px 40px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+        .footer-copy {
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .container { padding: 0 28px; }
+            .grad-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 900px) {
+            .voice-article,
+            .voice-article:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .voice-article:nth-child(even) .voice-profile {
+                order: 0;
+            }
+
+            .voice-profile { padding: 32px 24px; flex-direction: row; text-align: left; gap: 20px; }
+            .voice-avatar { width: 72px; height: 72px; flex-shrink: 0; margin-bottom: 0; }
+            .voice-body { padding: 28px 28px; }
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 0 20px; }
+            .hero { padding: 64px 0 52px; }
+            .hero-stats { gap: 24px; }
+            .section { padding: 64px 0; }
+            .container { padding: 0 20px; }
+            .grad-grid { grid-template-columns: 1fr; }
+            .voice-profile { flex-direction: column; align-items: center; text-align: center; }
+            .voice-body { padding: 24px 20px; }
+            .cta-btns { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══ HEADER ══ -->
+    <header>
+        <a href="index.html" class="logo">
+            みちのくコンピュータアカデミー
+            <span>IT専門学校</span>
+        </a>
+        <a href="index.html" class="header-back">
+            ← トップページへ
+        </a>
+    </header>
+
+    <!-- ══ HERO ══ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-label">Student &amp; Graduate Voice</div>
+                <h1 class="hero-title">
+                    先輩たちの<em>リアル</em>な声
+                </h1>
+                <p class="hero-sub">
+                    入学前の不安、授業の手応え、就職活動、卒業後の今――<br>
+                    飾らない言葉でお届けします。
+                </p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">96<sup>%</sup></div>
+                        <div class="hero-stat-label">就職・進学率</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">3,000<sup>+</sup></div>
+                        <div class="hero-stat-label">卒業生数</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">200<sup>+</sup></div>
+                        <div class="hero-stat-label">就職先企業数</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ STUDENT VOICES ══ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-label">In School</span>
+                <h2 class="section-title">在校生の声</h2>
+                <p class="section-sub">今まさに学んでいる先輩たちに、入学前の不安や学校の雰囲気を聞きました。</p>
+            </div>
+            <div class="voice-list">
+
+                <!-- Voice 1 -->
+                <div class="voice-article">
+                    <div class="voice-profile">
+                        <div class="voice-avatar">IMG</div>
+                        <div>
+                            <div class="voice-name">Aさん（2年生）</div>
+                            <div class="voice-dept">システムクリエイト科</div>
+                            <div class="voice-career">
+                                出身：岩手県 普通科高校<br>
+                                <strong>入学前：PC経験ほぼなし</strong><br>
+                                現在：就活中（エンジニア志望）
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voice-body">
+                        <div class="voice-tag">入学のきっかけ</div>
+                        <div class="voice-q">なぜIT専門学校を選んだのですか？</div>
+                        <div class="voice-a">
+                            高校時代はゲームが好きで、「作る側になりたい」という気持ちが漠然とありました。でも理系でもなく、プログラミング経験もゼロ。<em>「文系でもついていける？」</em>というのが一番の不安でした。学校説明会で先生に直接聞いたら「基礎から教えるから大丈夫」と言ってもらえて、それが決め手でした。
+                        </div>
+                        <div class="voice-q">実際に入学してみてどうでしたか？</div>
+                        <div class="voice-a">
+                            最初の1ヶ月はさすがに戸惑いましたが、<em>少人数で先生に質問しやすい環境</em>がとても助かりました。今では自分でWebアプリを作れるようになって、就職活動にも自信を持って臨めています。取得した基本情報技術者の資格も採用担当者に評価してもらえています。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voice 2 -->
+                <div class="voice-article">
+                    <div class="voice-profile">
+                        <div class="voice-avatar">IMG</div>
+                        <div>
+                            <div class="voice-name">Bさん（1年生）</div>
+                            <div class="voice-dept">e-Sports専攻</div>
+                            <div class="voice-career">
+                                出身：宮城県 普通科高校<br>
+                                <strong>ゲーム歴：7年</strong><br>
+                                入学動機：e-Sports業界に入りたい
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voice-body">
+                        <div class="voice-tag">学んでいること</div>
+                        <div class="voice-q">e-Sports専攻では何を学んでいますか？</div>
+                        <div class="voice-a">
+                            「プレイするだけじゃないんだ」というのが一番の驚きでした。大会の<em>運営・企画・実況・配信</em>まで幅広く学べます。ゲームが好きなだけじゃなくて、業界全体を俯瞰して動ける人材になれると感じています。
+                        </div>
+                        <div class="voice-q">入学前の心配は？</div>
+                        <div class="voice-a">
+                            「将来ちゃんと仕事になるのか」という不安は正直ありました。でも<em>就職支援の先生が丁寧に相談に乗ってくれる</em>し、卒業生がe-Sports関連企業に就職している実績もあったので安心しました。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voice 3 -->
+                <div class="voice-article">
+                    <div class="voice-profile">
+                        <div class="voice-avatar">IMG</div>
+                        <div>
+                            <div class="voice-name">Cさん（2年生）</div>
+                            <div class="voice-dept">ビジネススペシャリスト科</div>
+                            <div class="voice-career">
+                                出身：青森県 商業高校<br>
+                                <strong>資格：ITパスポート・MOS取得</strong><br>
+                                現在：内定獲得済み
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voice-body">
+                        <div class="voice-tag">資格・就活</div>
+                        <div class="voice-q">ビジネススペシャリスト科を選んだ理由は？</div>
+                        <div class="voice-a">
+                            商業高校でExcelやWord は使えていたので、<em>ITとビジネスを同時に学べる環境</em>を探していました。営業・提案・資格取得が一緒に学べるのがここしかなくて。
+                        </div>
+                        <div class="voice-q">就職活動はいかがでしたか？</div>
+                        <div class="voice-a">
+                            2年生の前期で内定をいただけました。授業で学んだ<em>ビジネス提案の実習がそのまま面接で話せる経験</em>になっていて、採用担当者から「具体的なエピソードが印象的だった」と言っていただけました。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ GRADUATE VOICES ══ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-label">After Graduation</span>
+                <h2 class="section-title">卒業生の活躍</h2>
+                <p class="section-sub">卒業後、さまざまなフィールドで活躍している先輩たちの声をご紹介します。</p>
+            </div>
+            <div class="grad-grid">
+                <div class="grad-card">
+                    <div class="grad-company">仙台市内 IT企業</div>
+                    <div class="grad-role">Webエンジニア</div>
+                    <div class="grad-dept">システムクリエイト科 卒</div>
+                    <div class="grad-quote">「在学中に作ったポートフォリオが採用の決め手でした。今は実務でもそのときの経験が生きています。」</div>
+                </div>
+                <div class="grad-card">
+                    <div class="grad-company">東京都内 IT商社</div>
+                    <div class="grad-role">IT営業・コンサルタント</div>
+                    <div class="grad-dept">ビジネススペシャリスト科 卒</div>
+                    <div class="grad-quote">「ビジネスマナーとIT知識が両方あることで、お客様との会話の幅が全然違います。専門学校で良かったと心から思います。」</div>
+                </div>
+                <div class="grad-card">
+                    <div class="grad-company">e-Sports運営会社</div>
+                    <div class="grad-role">大会プランナー</div>
+                    <div class="grad-dept">e-Sports専攻 卒</div>
+                    <div class="grad-quote">「在学中に実際の大会運営を経験できたのが就職に直結しました。好きなことを仕事にできて充実しています。」</div>
+                </div>
+                <div class="grad-card">
+                    <div class="grad-company">盛岡市内 SIer</div>
+                    <div class="grad-role">システム開発エンジニア</div>
+                    <div class="grad-dept">システムクリエイト科 卒</div>
+                    <div class="grad-quote">「地元に帰って就職できたのも学校のサポートのおかげです。企業との繋がりが強いので安心して就活できました。」</div>
+                </div>
+                <div class="grad-card">
+                    <div class="grad-company">ゲーム関連企業</div>
+                    <div class="grad-role">ゲームプランナー</div>
+                    <div class="grad-dept">e-Sports専攻 卒</div>
+                    <div class="grad-quote">「専攻の授業でゲームを「分析する目」が身についたことで、企画職でも評価してもらえました。」</div>
+                </div>
+                <div class="grad-card">
+                    <div class="grad-company">情報サービス企業</div>
+                    <div class="grad-role">ITサポート・ヘルプデスク</div>
+                    <div class="grad-dept">ビジネススペシャリスト科 卒</div>
+                    <div class="grad-quote">「資格を複数持っていたことで選択肢が広がりました。コミュニケーションとITを両方使える仕事ができています。」</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CTA ══ -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-title">先輩に直接話を聞いてみませんか？</div>
+            <p class="cta-sub">
+                オープンキャンパスでは在校生スタッフが参加しています。<br>
+                気になることは何でも聞いてみてください。
+            </p>
+            <div class="cta-btns">
+                <a href="oc.html" class="btn-accent">オープンキャンパスに申し込む →</a>
+                <a href="index.html" class="btn-outline-white">学校トップページへ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">トップページ</a>
+            <a href="oc.html">オープンキャンパス</a>
+            <a href="#">プライバシーポリシー</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 みちのくコンピュータアカデミー. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
