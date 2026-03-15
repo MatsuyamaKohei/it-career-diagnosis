@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>オープンキャンパス | みちのくコンピュータアカデミー</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         :root {
             --main: #006D3A;
@@ -30,7 +38,11 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
 
         /* ── HEADER ── */
         header {
@@ -54,10 +66,15 @@
             letter-spacing: -0.02em;
         }
 
-        .logo span { color: rgba(255,255,255,0.55); font-size: 12px; font-weight: 400; margin-left: 10px; }
+        .logo span {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 12px;
+            font-weight: 400;
+            margin-left: 10px;
+        }
 
         .header-back {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 13px;
             text-decoration: none;
             display: flex;
@@ -66,7 +83,9 @@
             transition: color 0.2s;
         }
 
-        .header-back:hover { color: white; }
+        .header-back:hover {
+            color: white;
+        }
 
         /* ── HERO ── */
         .hero {
@@ -84,7 +103,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 70% 50%, rgba(255,255,255,0.06) 0%, transparent 60%);
+            background: radial-gradient(ellipse at 70% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
         }
 
         .hero-inner {
@@ -100,8 +119,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 100px;
             padding: 6px 16px;
             font-size: 12px;
@@ -111,16 +130,24 @@
         }
 
         .hero-label-dot {
-            width: 7px; height: 7px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: #4ade80;
-            box-shadow: 0 0 0 3px rgba(74,222,128,0.3);
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.3);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%,100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.3); }
-            50%      { box-shadow: 0 0 0 7px rgba(74,222,128,0); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 0 7px rgba(74, 222, 128, 0);
+            }
         }
 
         .hero-title {
@@ -138,7 +165,7 @@
 
         .hero-sub {
             font-size: 15px;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.85;
             margin-bottom: 36px;
         }
@@ -177,18 +204,22 @@
             border-radius: 50px;
             padding: 15px 32px;
             font-size: 15px;
-            border: 2px solid rgba(255,255,255,0.5);
+            border: 2px solid rgba(255, 255, 255, 0.5);
             transition: all 0.2s;
         }
 
         @media (hover: hover) {
             .btn-outline-white:hover {
                 border-color: white;
-                background: rgba(255,255,255,0.1);
+                background: rgba(255, 255, 255, 0.1);
             }
         }
 
-        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
 
         .hero-visual {
             display: grid;
@@ -197,8 +228,8 @@
         }
 
         .hero-card {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 12px;
             padding: 18px 16px;
             text-align: center;
@@ -213,16 +244,43 @@
             padding: 20px 22px;
         }
 
-        .hero-card-icon { font-size: 32px; }
-        .hero-card-label { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 3px; }
-        .hero-card-value { font-size: 20px; font-weight: 900; }
-        .hero-card-sm .hero-card-icon { font-size: 28px; margin-bottom: 6px; }
-        .hero-card-sm .hero-card-label { font-size: 10px; }
-        .hero-card-sm .hero-card-value { font-size: 15px; font-weight: 700; }
+        .hero-card-icon {
+            font-size: 32px;
+        }
+
+        .hero-card-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 3px;
+        }
+
+        .hero-card-value {
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .hero-card-sm .hero-card-icon {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .hero-card-sm .hero-card-label {
+            font-size: 10px;
+        }
+
+        .hero-card-sm .hero-card-value {
+            font-size: 15px;
+            font-weight: 700;
+        }
 
         /* ── SECTION COMMON ── */
-        .section { padding: 96px 0; }
-        .section-alt { background: white; }
+        .section {
+            padding: 96px 0;
+        }
+
+        .section-alt {
+            background: white;
+        }
 
         .section-head {
             text-align: center;
@@ -265,14 +323,14 @@
             background: white;
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
             transition: transform 0.25s, box-shadow 0.25s;
         }
 
         @media (hover: hover) {
             .exp-card:hover {
                 transform: translateY(-6px);
-                box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
             }
         }
 
@@ -288,7 +346,9 @@
             letter-spacing: 0.08em;
         }
 
-        .exp-body { padding: 22px 22px 26px; }
+        .exp-body {
+            padding: 22px 22px 26px;
+        }
 
         .exp-tag {
             display: inline-block;
@@ -381,7 +441,10 @@
             margin-top: 8px;
         }
 
-        .schedule-badge.open { background: #dcfce7; color: #166534; }
+        .schedule-badge.open {
+            background: #dcfce7;
+            color: #166534;
+        }
 
         /* ── FLOW ── */
         .flow-list {
@@ -408,10 +471,15 @@
             margin: 6px auto 0;
         }
 
-        .flow-left { display: flex; flex-direction: column; align-items: center; }
+        .flow-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
         .flow-num {
-            width: 44px; height: 44px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: var(--main);
             color: white;
@@ -422,7 +490,9 @@
             justify-content: center;
         }
 
-        .flow-right { padding: 10px 0 40px; }
+        .flow-right {
+            padding: 10px 0 40px;
+        }
 
         .flow-title {
             font-size: 17px;
@@ -437,7 +507,13 @@
         }
 
         /* ── FAQ ── */
-        .faq-list { max-width: 740px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+        .faq-list {
+            max-width: 740px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
         .faq-item {
             background: white;
@@ -459,7 +535,8 @@
 
         .faq-icon {
             flex-shrink: 0;
-            width: 28px; height: 28px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             background: var(--main);
             color: white;
@@ -477,7 +554,9 @@
             transition: transform 0.3s;
         }
 
-        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
 
         .faq-a {
             max-height: 0;
@@ -485,7 +564,9 @@
             transition: max-height 0.35s ease;
         }
 
-        .faq-item.open .faq-a { max-height: 300px; }
+        .faq-item.open .faq-a {
+            max-height: 300px;
+        }
 
         .faq-a-inner {
             padding: 0 22px 20px 64px;
@@ -511,7 +592,7 @@
 
         .cta-sub {
             font-size: 15px;
-            color: rgba(255,255,255,0.75);
+            color: rgba(255, 255, 255, 0.75);
             margin-bottom: 40px;
         }
 
@@ -532,7 +613,9 @@
             text-align: center;
         }
 
-        .form-group { margin-bottom: 16px; }
+        .form-group {
+            margin-bottom: 16px;
+        }
 
         .form-label {
             display: block;
@@ -552,7 +635,8 @@
             vertical-align: middle;
         }
 
-        .form-input, .form-select {
+        .form-input,
+        .form-select {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid #e5e7eb;
@@ -564,7 +648,8 @@
             background: white;
         }
 
-        .form-input:focus, .form-select:focus {
+        .form-input:focus,
+        .form-select:focus {
             outline: none;
             border-color: var(--main);
         }
@@ -615,44 +700,90 @@
         }
 
         .footer-links a {
-            color: rgba(255,255,255,0.45);
+            color: rgba(255, 255, 255, 0.45);
             text-decoration: none;
             font-size: 12px;
             transition: color 0.2s;
         }
 
-        .footer-links a:hover { color: rgba(255,255,255,0.8); }
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
 
         .footer-copy {
             font-size: 12px;
-            color: rgba(255,255,255,0.3);
+            color: rgba(255, 255, 255, 0.3);
         }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
-            .container { padding: 0 28px; }
-            .schedule-grid { grid-template-columns: repeat(2, 1fr); }
+            .container {
+                padding: 0 28px;
+            }
+
+            .schedule-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            header { padding: 0 20px; }
-            .hero { padding: 72px 0 60px; min-height: auto; }
-            .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-            .hero-visual { display: none; }
-            .section { padding: 64px 0; }
-            .exp-grid { grid-template-columns: 1fr; }
-            .schedule-grid { grid-template-columns: 1fr 1fr; }
-            .container { padding: 0 20px; }
-            .cta-form-card { padding: 28px 24px; }
+            header {
+                padding: 0 20px;
+            }
+
+            .hero {
+                padding: 72px 0 60px;
+                min-height: auto;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .section {
+                padding: 64px 0;
+            }
+
+            .exp-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .cta-form-card {
+                padding: 28px 24px;
+            }
         }
 
         @media (max-width: 480px) {
-            .schedule-grid { grid-template-columns: 1fr; }
-            .hero-btns { flex-direction: column; }
-            .btn-accent, .btn-outline-white { text-align: center; justify-content: center; }
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+            }
+
+            .btn-accent,
+            .btn-outline-white {
+                text-align: center;
+                justify-content: center;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- ══ HEADER ══ -->
@@ -677,11 +808,12 @@
                     </div>
                     <h1 class="hero-title">
                         <em>体験して</em>みないと<br>
-                        わからないことがある。
+                        わからないことが<br>
+                        ある。
                     </h1>
                     <p class="hero-sub">
                         プログラミング・ゲーム・AI・3DCG――<br>
-                        「好き」が「仕事」になる瞬間を、この目で確かめてください。<br>
+                        「好き」が「仕事」になる瞬間を、<br>この目で確かめてください。<br>
                         参加費無料・1人でも友達と一緒でも大歓迎。
                     </p>
                     <div class="hero-btns">
@@ -726,7 +858,8 @@
                     <div class="exp-body">
                         <div class="exp-tag">体験授業</div>
                         <div class="exp-name">テーマ別 実習体験</div>
-                        <div class="exp-desc">プログラミング・ゲーム・AI・3DCGなど、毎回異なるテーマで実際に手を動かす体験授業。難しい知識は一切不要、初心者でもすぐに楽しめます。</div>
+                        <div class="exp-desc">プログラミング・ゲーム・AI・3DCGなど、毎回異なるテーマで実際に手を動かす体験授業。難しい知識は一切不要、初心者でもすぐに楽しめます。
+                        </div>
                     </div>
                 </div>
                 <div class="exp-card">
@@ -782,8 +915,8 @@
                     <div class="schedule-time">10:00〜13:00</div>
                     <span class="schedule-badge">準備中</span>
                 </div>
-                </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -947,7 +1080,7 @@
             <a href="voices.html">先輩の声</a>
             <a href="#">プライバシーポリシー</a>
         </div>
-        <p class="footer-copy">&copy; 2025 あおもりコンピュータ・カレッジ. All Rights Reserved.</p>
+        <p class="footer-copy">&copy; 2025 みちのくコンピュータアカデミー. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -956,4 +1089,5 @@
         }
     </script>
 </body>
+
 </html>
